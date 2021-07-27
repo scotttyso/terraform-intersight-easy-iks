@@ -203,6 +203,7 @@ module "k8s_trusted_registries" {
 
 module "k8s_version_policies" {
   source      = "terraform-cisco-modules/imm/intersight//modules/policies_k8s_version"
+  version     = ">=0.3.7"
   for_each    = local.k8s_version_policies
   description = each.value.description != "" ? each.value.description : "${var.tenant_name} Version ${each.value.version} Policy."
   name        = each.value.name != "" ? "${each.value.name}_v${each.value.version}" : "${var.tenant_name}_v${each.value.version}"
