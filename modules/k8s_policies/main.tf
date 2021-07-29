@@ -13,8 +13,7 @@ module "ip_pools" {
   description      = each.value.description != "" ? each.value.description : "${each.key} IP Pool."
   dns_servers_v4   = each.value.dns_servers_v4
   name             = each.key
-  org_moid         = "60aeca786972652d32ee5e46"
-  #org_moid         = local.org_moids[each.value.organization].moid
+  org_moid         = local.org_moids[each.value.organization].moid
   tags             = each.value.tags != [] ? each.value.tags : local.tags
   ipv4_block = [
     {
