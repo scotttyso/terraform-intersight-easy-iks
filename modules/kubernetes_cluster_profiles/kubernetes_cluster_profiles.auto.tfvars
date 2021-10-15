@@ -43,8 +43,8 @@ tfc_workspace    = "Wakanda_kubernetes_policies"
 #__________________________________________________________
 
 kubernetes_cluster_profiles = {
-  "Wakanda_k8s_cl02" = {
-    action                             = "Deploy" # Options are {Delete|Deploy|Ready|No-op|Unassign}.
+  "Wakanda_k8s_cl03" = {
+    action                             = "No-op" # Options are {Delete|Deploy|Ready|No-op|Unassign}.
     addons_policy_moid                 = ["ccp-monitor", "kubernetes-dashboard"]
     container_runtime_moid             = ""
     ip_pool_moid                       = "Wakanda_pool_v4"
