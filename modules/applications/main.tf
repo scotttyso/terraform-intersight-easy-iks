@@ -22,15 +22,22 @@ locals {
 
 #_____________________________________________________________________
 #
-# Deploy the Hello-Kubernetes Application Pod using the Helm Provider
+# Deploy Applications using the Helm Provider
 #_____________________________________________________________________
 
-resource "helm_release" "hello_iks_app" {
-  name      = "helloiksapp"
-  namespace = "default"
-  chart     = "https://prathjan.github.io/helm-chart/helloiks-0.1.0.tgz"
-  set {
-    name  = "MESSAGE"
-    value = "Hello Intersight Kubernetes Service from Terraform Cloud for Business!!"
+resource "helm_release" "helm_chart" {
+  for_each  = var.helm_release
+  chart     = each.value.chart
+  name      = each.value.name
+  namespace = each.value.namespace
+  dynamic "set" {
+    for_each = each.value.set
+    name     = set.value.name
+    value    = set.value.value == "cluster_name" ? "${local.cluster_name}_sample" : set.value.value
   }
+}
+
+resource "kubectl_manifest" "manifest" {
+  for_each  = var.kubectl_manifest
+  yaml_body = each.value.yaml_body
 }

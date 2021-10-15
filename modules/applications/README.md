@@ -1,6 +1,6 @@
-# Kubernetes Applications - IWO
+# applications - Kubernetes Applications
 
-## Use this module to deploy Intersight Workload Optimizer through the Intersight Assist Appliance
+## Use this module to deploy Helm Charts and Kubectl YAML Manifests
 
 Run the plan from the Terraform cloud workspace.
 
