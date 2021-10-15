@@ -46,43 +46,40 @@ vcs_repo         = "scotttyso/terraform-intersight-iks-iwo"
 #__________________________________________________________
 
 workspaces = {
-  "#Cluster#_kubernetes_policies" = {
+  "Wakanda_kubernetes_policies" = {
     auto_apply          = true
-    description         = "#Cluster# Kubernetes Policies."
+    description         = "Wakanda Kubernetes Policies."
     global_remote_state = true
     working_directory   = "modules/kubernetes_policies"
     workspace_type      = "policies"
   }
-  "#Cluster#_iks_cl01" = {
+  "Wakanda_iks_cl01" = {
     auto_apply          = true
-    description         = "#Cluster# Intersight Kubernetes Service Cluster01"
+    description         = "Wakanda Intersight Kubernetes Service Cluster01"
     global_remote_state = true
     working_directory   = "modules/kubernetes_cluster_profiles"
     workspace_type      = "cluster"
   }
-  "#Cluster#_iks_cl01_kubeconfig" = {
+  "Wakanda_iks_cl01_kubeconfig" = {
     auto_apply          = true
-    cluster_name        = "#Cluster#_iks_cl01"
-    description         = "#Cluster# Intersight Kubernetes Service Cluster01 kubeconfig."
+    description         = "Wakanda Intersight Kubernetes Service Cluster01 kubeconfig."
     global_remote_state = true
     working_directory   = "modules/kubeconfig"
     workspace_type      = "kubeconfig"
   }
-  "#Cluster#_iks_cl01_app_hello" = {
-    agent_pool_id     = "Richfield_Agents"
+  "Wakanda_iks_cl01_app_hello" = {
+    agent_pool        = "Richfield_Agents"
     auto_apply        = true
-    description       = "#Cluster# Intersight Kubernetes Service Cluster01 App Hello."
+    description       = "Wakanda Intersight Kubernetes Service Cluster01 App Hello."
     execution_mode    = "agent"
-    remote_workspace  = "#Cluster#_iks_cl01_kubeconfig"
     working_directory = "modules/app_hello"
     workspace_type    = "app"
   }
-  "#Cluster#_iks_cl01_iwo" = {
-    agent_pool_id     = "Richfield_Agents"
+  "Wakanda_iks_cl01_iwo" = {
+    agent_pool        = "Richfield_Agents"
     auto_apply        = true
-    description       = "#Cluster# Intersight Kubernetes Service Cluster01 IWO."
+    description       = "Wakanda Intersight Kubernetes Service Cluster01 IWO."
     execution_mode    = "agent"
-    remote_workspace  = "#Cluster#_iks_cl01_kubeconfig"
     working_directory = "modules/iwo"
     workspace_type    = "app"
   }

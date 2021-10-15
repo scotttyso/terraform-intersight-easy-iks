@@ -9,7 +9,7 @@
 #__________________________________________________________
 
 # endpoint     = "https://intersight.com"
-organizations = ["default"]
+organizations = ["Wakanda"]
 # secretkey    = "../../../../intersight.secret"
 /*
   To export the Secret Key via an Environment Variable the format is as follows (Note: they are not quotation marks, but escape characters):
@@ -38,12 +38,12 @@ tags = [{ key = "Terraform", value = "Module" }, { key = "Owner", value = "tysco
 
 addons_policies = {
   "ccp-monitor" = {
-    organization = "default"
+    organization = "Wakanda"
     # This is empty because I am accepting all the default values
   }
   "kubernetes-dashboard" = {
     install_strategy = "InstallOnly"
-    organization     = "default"
+    organization     = "Wakanda"
     upgrade_strategy = "AlwaysReinstall"
   }
 }
@@ -61,7 +61,7 @@ container_runtime_policies = {}
 #______________________________________________
 
 ip_pools = {
-  "#Tenant#_pool_v4" = {
+  "Wakanda_pool_v4" = {
     assignment_order = "sequential"
     ipv4_block = [
       {
@@ -79,10 +79,10 @@ ip_pools = {
     }
     ipv6_block   = []
     ipv6_config  = {}
-    organization = "default"
+    organization = "Wakanda"
     tags         = []
   }
-  "#Tenant#_pool_v6" = {
+  "Wakanda_pool_v6" = {
     assignment_order = "sequential"
     ipv4_block       = []
     ipv4_config      = {}
@@ -100,7 +100,7 @@ ip_pools = {
         secondary_dns = "2620:119:53::53"
       }
     }
-    organization = "default"
+    organization = "Wakanda"
     tags         = []
   }
 }
@@ -111,8 +111,8 @@ ip_pools = {
 #__________________________________________________
 
 kubernetes_version_policies = {
-  "#Tenant#_v1_19_5" = {
-    organization = "default"
+  "Wakanda_v1_19_5" = {
+    organization = "Wakanda"
     # This is empty because I am accepting all the default values
   }
 }
@@ -123,8 +123,8 @@ kubernetes_version_policies = {
 #______________________________________________
 
 network_cidr_policies = {
-  "#Tenant#_network_cidr" = {
-    organization = "default"
+  "Wakanda_network_cidr" = {
+    organization = "Wakanda"
     # This is empty because I am accepting all the default values
   }
 }
@@ -136,12 +136,12 @@ network_cidr_policies = {
 #______________________________________________
 
 nodeos_configuration_policies = {
-  "#Tenant#_nodeos_config" = {
+  "Wakanda_nodeos_config" = {
     dns_servers = ["10.101.128.15", "10.101.128.16"]
     dns_suffix  = "rich.ciscolabs.com"
     #  If ntp_servers is not set, dns_servers will be used as NTP servers
     # ntp_servers = []
-    organization = "default"
+    organization = "Wakanda"
     # For a List of timezones see
     # https://github.com/terraform-cisco-modules/terraform-intersight-imm/blob/master/modules/policies_ntp/README.md.
     timezone = "America/New_York"
@@ -154,8 +154,8 @@ nodeos_configuration_policies = {
 #__________________________________________________
 
 trusted_certificate_authorities = {
-  "#Tenant#_registry" = {
-    organization        = "default"
+  "Wakanda_registry" = {
+    organization        = "Wakanda"
     unsigned_registries = ["10.101.128.128"]
   }
 }
@@ -166,13 +166,13 @@ trusted_certificate_authorities = {
 #_______________________________________________
 
 virtual_machine_infra_config = {
-  "#Tenant#_vm_infra" = {
-    organization          = "default"
+  "Wakanda_vm_infra" = {
+    organization          = "Wakanda"
     vsphere_cluster       = "Panther"
     vsphere_datastore     = "NVMe_DS1"
     vsphere_portgroup     = ["prod|nets|Panther_VM1"]
     vsphere_resource_pool = "IKS"
-    vsphere_target        = "#Tenant#-vcenter.rich.ciscolabs.com"
+    vsphere_target        = "Wakanda-vcenter.rich.ciscolabs.com"
   }
 }
 
@@ -182,20 +182,20 @@ virtual_machine_infra_config = {
 #________________________________________________
 
 virtual_machine_instance_type = {
-  "#Tenant#_large" = {
+  "Wakanda_large" = {
     cpu          = 12
     disk         = 80
     memory       = 32768
-    organization = "default"
+    organization = "Wakanda"
   }
-  "#Tenant#_medium" = {
+  "Wakanda_medium" = {
     cpu          = 8
     disk         = 60
     memory       = 24576
-    organization = "default"
+    organization = "Wakanda"
   }
-  "#Tenant#_small" = {
-    organization = "default"
+  "Wakanda_small" = {
+    organization = "Wakanda"
     # This is empty because I am accepting all the default values
   }
 }
