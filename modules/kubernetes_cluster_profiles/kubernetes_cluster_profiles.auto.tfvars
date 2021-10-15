@@ -4,7 +4,7 @@
 #__________________________________________________________
 
 tfc_organization = "Cisco-Richfield-Lab"
-tfc_workspace    = "Your_Workspace"
+tfc_workspace    = "Wakanda_kubernetes_policies"
 /*
   We highly recommend that for the terraform_cloud_token you use an environment variable for input:
   - export TF_VAR_terraform_cloud_token="abcdefghijklmnopqrstuvwxyz.0123456789"

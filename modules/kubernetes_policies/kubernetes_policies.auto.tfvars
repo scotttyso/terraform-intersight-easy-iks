@@ -172,7 +172,7 @@ virtual_machine_infra_config = {
     vsphere_datastore     = "NVMe_DS1"
     vsphere_portgroup     = ["prod|nets|Panther_VM1"]
     vsphere_resource_pool = "IKS"
-    vsphere_target        = "Wakanda-vcenter.rich.ciscolabs.com"
+    vsphere_target        = "wakanda-vcenter.rich.ciscolabs.com"
   }
 }
 
