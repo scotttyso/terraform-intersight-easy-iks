@@ -183,16 +183,16 @@ virtual_machine_infra_config = {
 
 virtual_machine_instance_type = {
   "Wakanda_large" = {
-    cpu          = 12
-    disk         = 80
-    memory       = 32768
-    organization = "Wakanda"
+    cpu              = 12
+    system_disk_size = 80
+    memory           = 32768
+    organization     = "Wakanda"
   }
   "Wakanda_medium" = {
-    cpu          = 8
-    disk         = 60
-    memory       = 24576
-    organization = "Wakanda"
+    cpu              = 8
+    system_disk_size = 60
+    memory           = 24576
+    organization     = "Wakanda"
   }
   "Wakanda_small" = {
     organization = "Wakanda"
