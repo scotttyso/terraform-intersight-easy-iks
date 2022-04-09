@@ -53,7 +53,7 @@ workspaces = {
     workspace_type      = "policies"
   }
   "Wakanda_iks_clusters" = {
-    auto_apply          = true
+    auto_apply          = false
     description         = "Wakanda Intersight Kubernetes Service Cluster01"
     global_remote_state = true
     working_directory   = "modules/kubernetes_cluster_profiles"
