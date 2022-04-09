@@ -1,4 +1,8 @@
-# Configuring IKS cluster with Cisco Intersight Service for HashiCorp Terraform on vSphere Infrastructure
+# Intersight Easy IKS - Infrastructure as Code
+
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/terraform-cisco-modules/terraform-intersight-easy-iks)
+
+## Configuring IKS clusters with Cisco Intersight Service for HashiCorp Terraform on vSphere Infrastructure
 
 ## Contents
 
@@ -58,6 +62,8 @@
 1. Open the Workspace "{organization}" in TFCB and queue a plan manually. This will Create the Organization Poliices and add outputs to be consumed by the next module {cluster_name}.
 
 2. You will execute the Runs in the workspaces in this order:
+
+    * {cluster_name}_profiles - See section below on "Provision IKS Cluster and IP Pools with TFCB"
 
     * {cluster_name} - See section below on "Provision IKS Cluster and IP Pools with TFCB"
 

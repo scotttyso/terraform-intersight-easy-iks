@@ -3,8 +3,11 @@
 # Terraform Cloud Variables
 #__________________________________________________________
 
-tfc_organization = "Cisco-Richfield-Lab"
-tfc_workspace    = "Your_Workspace"
+tfc_workspaces = [{
+  backend      = "remote"
+  organization = "Your_Organization"
+  workspace    = "Your_kubeconfig_Workspace"
+}]
 /*
   We highly recommend that for the terraform_cloud_token you use an environment variable for input:
   - export TF_VAR_terraform_cloud_token="abcdefghijklmnopqrstuvwxyz.0123456789"
@@ -25,7 +28,7 @@ tfc_workspace    = "Your_Workspace"
 #__________________________________________________________
 
 # endpoint     = "https://intersight.com"
-# secretkey    = "~/intersight.secret"
+# secretkey    = "~/Downloads/SecretKey.txt"
 /*
   To export the Secret Key via an Environment Variable the format is as follows (Note: they are not quotation marks, but escape characters):
   - export TF_VAR_secretkey=`cat ~/intersight.secret`
