@@ -4,10 +4,9 @@
 #__________________________________________________________
 
 agent_pool        = "Richfield_Agents"
-terraform_version = "1.0.3"
-# tfc_email         = "tyscott@cisco.com"
+terraform_version = "1.1.8"
 tfc_organization = "Cisco-Richfield-Lab"
-vcs_repo         = "scotttyso/terraform-intersight-iks-iwo"
+vcs_repo         = "scotttyso/terraform-intersight-easy-iks"
 /*
   We highly recommend that for the terraform_cloud_token you use an environment variable for input:
   - export TF_VAR_terraform_cloud_token="abcdefghijklmnopqrstuvwxyz.0123456789"
@@ -53,21 +52,21 @@ workspaces = {
     working_directory   = "modules/kubernetes_policies"
     workspace_type      = "policies"
   }
-  "Wakanda_iks_cl01" = {
+  "Wakanda_iks_clusters" = {
     auto_apply          = true
     description         = "Wakanda Intersight Kubernetes Service Cluster01"
     global_remote_state = true
     working_directory   = "modules/kubernetes_cluster_profiles"
     workspace_type      = "cluster"
   }
-  "Wakanda_iks_cl01_kubeconfig" = {
+  "Wakanda_iks_kubeconfig" = {
     auto_apply          = true
     description         = "Wakanda Intersight Kubernetes Service Cluster01 kubeconfig."
     global_remote_state = true
     working_directory   = "modules/kubeconfig"
     workspace_type      = "kubeconfig"
   }
-  "Wakanda_iks_cl01_app_hello" = {
+  "Wakanda_iks_app_hello" = {
     agent_pool        = "Richfield_Agents"
     auto_apply        = true
     description       = "Wakanda Intersight Kubernetes Service Cluster01 App Hello."
@@ -75,7 +74,7 @@ workspaces = {
     working_directory = "modules/app_hello"
     workspace_type    = "app"
   }
-  "Wakanda_iks_cl01_iwo" = {
+  "Wakanda_iks_iwo" = {
     agent_pool        = "Richfield_Agents"
     auto_apply        = true
     description       = "Wakanda Intersight Kubernetes Service Cluster01 IWO."
