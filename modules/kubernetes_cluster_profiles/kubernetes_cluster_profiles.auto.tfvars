@@ -6,7 +6,7 @@ tfc_workspaces = [{
 
 kubernetes_cluster_profiles = {
   "panther-cl1" = {
-    action                    = "Deploy" # Options are {Delete|Deploy|Ready|No-op|Unassign}.
+    action                    = "No-op" # Options are {Delete|Deploy|Ready|No-op|Unassign}.
     addons_policies           = ["ccp-monitor", "kubernetes-dashboard"]
     certificate_configuration = false
     cluster_configuration = [{
