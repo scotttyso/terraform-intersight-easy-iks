@@ -6,7 +6,7 @@
 variable "kubernetes_cluster_profiles" {
   default = {
     default = {
-      action                    = "No-op" # {Delete|Deploy|Ready|No-op|Unassign}
+      action                    = "Deploy" # {Delete|Deploy|Ready|No-op|Unassign}
       action_ignore             = false
       addons_policies           = ["default"]
       certificate_configuration = false
@@ -23,7 +23,6 @@ variable "kubernetes_cluster_profiles" {
       network_cidr_policy      = "default"
       node_pools = {
         "0" = {
-          # action                    = "No-op"
           desired_size              = 1
           description               = ""
           min_size                  = 1
@@ -56,7 +55,6 @@ variable "kubernetes_cluster_profiles" {
   * ip_pool - Name of the IP Pool to assign to Cluster and Node Profiles.
   * network_cidr_policy - Name of the Kubneretes Network CIDR Policy to assign to Cluster.
   * node_pools -   This Map of Objects is for both Control Plane Nodes and Worker Nodes.
-    - action - Action to perform on the Kubernetes Control Plane Nodes.  Options are {Delete|Deploy|Ready|No-op|Unassign}.
     - description - A description for the Policy.
     - desired_size - Desired number of control plane nodes in this node group, same as minsize initially and is updated by the auto-scaler.  Options are {1|3}.
     - ip_pool - Name of the IP Pool to assign to Cluster and Node Profiles.  If not Assigned it will assign the ip_pool assigned to the cluster.
@@ -102,7 +100,6 @@ variable "kubernetes_cluster_profiles" {
       network_cidr_policy      = string
       node_pools = map(object(
         {
-          # action                    = optional(string)
           description               = optional(string)
           desired_size              = optional(number)
           ip_pool                   = optional(string)
@@ -138,10 +135,10 @@ variable "ssh_public_key" {
 
 resource "intersight_kubernetes_cluster_profile" "kubernetes_cluster_profiles" {
   for_each            = local.kubernetes_cluster_profiles
-  action              = each.value.action
+  action              = each.value.action_ignore == false ? each.value.action : null
   description         = each.value.description != "" ? each.value.description : "${each.key} IKS Cluster."
   name                = each.key
-  wait_for_completion = each.value.action == "Deploy" && each.value.wait_for_completion == true ? true : false
+  wait_for_completion = each.value.wait_for_completion
   cluster_ip_pools {
     moid = local.ip_pools[each.value.ip_pool]
   }
@@ -269,7 +266,7 @@ resource "intersight_kubernetes_node_group_profile" "kubernetes_node_pools" {
     intersight_kubernetes_cluster_profile.kubernetes_cluster_profiles
   ]
   for_each    = local.kubernetes_node_pools
-  action      = each.value.action
+  action      = each.value.action_ignore == false ? each.value.action : null
   description = each.value.description
   name        = each.key
   node_type   = each.value.node_type
