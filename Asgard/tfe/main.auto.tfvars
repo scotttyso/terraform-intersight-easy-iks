@@ -49,21 +49,21 @@ workspaces = {
     auto_apply          = true
     description         = "Thor Kubernetes Policies."
     global_remote_state = true
-    working_directory   = "modules/kubernetes_policies"
+    working_directory   = "Asgard/kubernetes_policies"
     workspace_type      = "policies"
   }
   "Thor_iks_clusters" = {
     auto_apply          = false
     description         = "Thor Intersight Kubernetes Service Cluster01"
     global_remote_state = true
-    working_directory   = "modules/kubernetes_cluster_profiles"
+    working_directory   = "Asgard/kubernetes_cluster_profiles"
     workspace_type      = "cluster"
   }
   "Thor_iks_kubeconfig" = {
     auto_apply          = true
     description         = "Thor Intersight Kubernetes Service Cluster01 kubeconfig."
     global_remote_state = true
-    working_directory   = "modules/kubeconfig"
+    working_directory   = "Asgard/kubeconfig"
     workspace_type      = "kubeconfig"
   }
   "Thor_iks_app_hello" = {
@@ -71,7 +71,7 @@ workspaces = {
     auto_apply        = true
     description       = "Thor Intersight Kubernetes Service Cluster01 App Hello."
     execution_mode    = "agent"
-    working_directory = "modules/app_hello"
+    working_directory = "Asgard/app_hello"
     workspace_type    = "app"
   }
   "Thor_iks_iwo" = {
@@ -79,7 +79,7 @@ workspaces = {
     auto_apply        = true
     description       = "Thor Intersight Kubernetes Service Cluster01 IWO."
     execution_mode    = "agent"
-    working_directory = "modules/iwo"
+    working_directory = "Asgard/iwo"
     workspace_type    = "app"
   }
 }

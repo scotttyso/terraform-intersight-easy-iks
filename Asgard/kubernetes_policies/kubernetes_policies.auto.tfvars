@@ -74,7 +74,7 @@ kubernetes_version_policies = {
 
 # Network CIDR Policies
 network_cidr_policies = {
-  "Asgrad_CIDR" = {
+  "Asgard_CIDR" = {
     cni_type         = "Calico"
     pod_network_cidr = "100.88.0.0/16"
     service_cidr     = "100.89.0.0/16"
