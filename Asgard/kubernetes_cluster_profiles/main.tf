@@ -6,7 +6,7 @@
 variable "kubernetes_cluster_profiles" {
   default = {
     default = {
-      action                    = "Deploy" # {Delete|Deploy|Ready|No-op|Unassign}
+      action                    = "No-op" # {Delete|Deploy|Ready|No-op|Unassign}
       action_ignore             = false
       addons_policies           = ["default"]
       certificate_configuration = false
