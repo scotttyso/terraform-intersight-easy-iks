@@ -3,10 +3,10 @@
 # Terraform Cloud Variables
 #__________________________________________________________
 
-agent_pools        = ["Richfield_Agents"]
+agent_pools       = ["Richfield_Agents"]
 terraform_version = "1.1.8"
-tfc_organization = "Cisco-Richfield-Lab"
-vcs_repo         = "scotttyso/terraform-intersight-easy-iks"
+tfc_organization  = "Cisco-Richfield-Lab"
+vcs_repo          = "scotttyso/terraform-intersight-easy-iks"
 /*
   We highly recommend that for the terraform_cloud_token you use an environment variable for input:
   - export TF_VAR_terraform_cloud_token="abcdefghijklmnopqrstuvwxyz.0123456789"
@@ -46,40 +46,45 @@ vcs_repo         = "scotttyso/terraform-intersight-easy-iks"
 
 workspaces = {
   "Thor_kubernetes_policies" = {
-    auto_apply          = true
-    description         = "Thor Kubernetes Policies."
-    global_remote_state = true
-    working_directory   = "Asgard/kubernetes_policies"
-    workspace_type      = "policies"
+    auto_apply                    = true
+    description                   = "Thor Kubernetes Policies."
+    global_remote_state           = true
+    structured_run_output_enabled = false
+    working_directory             = "Asgard/kubernetes_policies"
+    workspace_type                = "policies"
   }
   "Thor_iks_clusters" = {
-    auto_apply          = false
-    description         = "Thor Intersight Kubernetes Service Cluster01"
-    global_remote_state = true
-    working_directory   = "Asgard/kubernetes_cluster_profiles"
-    workspace_type      = "cluster"
+    auto_apply                    = false
+    description                   = "Thor Intersight Kubernetes Service Cluster01"
+    global_remote_state           = true
+    structured_run_output_enabled = false
+    working_directory             = "Asgard/kubernetes_cluster_profiles"
+    workspace_type                = "cluster"
   }
   "Thor_iks_kubeconfig" = {
-    auto_apply          = true
-    description         = "Thor Intersight Kubernetes Service Cluster01 kubeconfig."
-    global_remote_state = true
-    working_directory   = "Asgard/kubeconfig"
-    workspace_type      = "kubeconfig"
+    auto_apply                    = true
+    description                   = "Thor Intersight Kubernetes Service Cluster01 kubeconfig."
+    global_remote_state           = true
+    structured_run_output_enabled = false
+    working_directory             = "Asgard/kubeconfig"
+    workspace_type                = "kubeconfig"
   }
   "Thor_iks_app_hello" = {
-    agent_pool        = "Richfield_Agents"
-    auto_apply        = true
-    description       = "Thor Intersight Kubernetes Service Cluster01 App Hello."
-    execution_mode    = "agent"
-    working_directory = "Asgard/app_hello"
-    workspace_type    = "app"
+    agent_pool                    = "Richfield_Agents"
+    auto_apply                    = true
+    description                   = "Thor Intersight Kubernetes Service Cluster01 App Hello."
+    execution_mode                = "agent"
+    structured_run_output_enabled = false
+    working_directory             = "Asgard/app_hello"
+    workspace_type                = "app"
   }
   "Thor_iks_iwo" = {
-    agent_pool        = "Richfield_Agents"
-    auto_apply        = true
-    description       = "Thor Intersight Kubernetes Service Cluster01 IWO."
-    execution_mode    = "agent"
-    working_directory = "Asgard/iwo"
-    workspace_type    = "app"
+    agent_pool                    = "Richfield_Agents"
+    auto_apply                    = true
+    description                   = "Thor Intersight Kubernetes Service Cluster01 IWO."
+    execution_mode                = "agent"
+    structured_run_output_enabled = false
+    working_directory             = "Asgard/iwo"
+    workspace_type                = "app"
   }
 }

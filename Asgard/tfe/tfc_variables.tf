@@ -81,7 +81,7 @@ resource "tfe_variable" "cluster_variables" {
   key         = each.value.key
   sensitive   = each.value.sensitive
   value = length(regexall(
-    "ssh_public_key_1", each.value.key)
-  ) > 0 ? var.ssh_public_key_1 : each.value.value
+    "ssh_public_key", each.value.key)
+  ) > 0 ? var.ssh_public_key : each.value.value
   workspace_id = tfe_workspace.workspaces[each.value.workspace].id
 }
