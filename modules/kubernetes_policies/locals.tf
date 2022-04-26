@@ -8,8 +8,19 @@ locals {
   # Kubernetes Cluster Profiles Variables
   addons_policies = {
     for k, v in var.addons_policies : k => {
-      description       = v.description != null ? v.description : ""
-      install_strategy  = v.install_strategy != null ? v.install_strategy : "Always"
+      chart_name       = v.chart_name != null ? v.chart_name : ""
+      chart_version    = v.chart_version != null ? v.chart_version : ""
+      description      = v.description != null ? v.description : ""
+      install_strategy = v.install_strategy != null ? v.install_strategy : "Always"
+      override_sets    = v.override_sets != null ? v.override_sets : []
+      overrides = v.overrides != null ? yamlencode(
+        {
+          "${element(split(",", v.overrides), 0)}" : {
+            "${element(split(",", v.overrides), 1)}" : "${element(split(",", v.overrides), 2)}"
+          }
+        }
+      ) : ""
+      release_name      = v.release_name != null ? v.release_name : ""
       release_namespace = v.release_namespace != null ? v.release_namespace : ""
       tags              = v.tags != null ? v.tags : []
       upgrade_strategy  = v.upgrade_strategy != null ? v.upgrade_strategy : "UpgradeOnly"
@@ -28,6 +39,7 @@ locals {
   ip_pools = {
     for k, v in var.ip_pools : k => {
       assignment_order = v.assignment_order != null ? v.assignment_order : "sequential"
+      create_pool      = v.create_pool != null ? v.create_pool : true
       description      = v.description != null ? v.description : ""
       ipv4_blocks      = v.ipv4_blocks != null ? v.ipv4_blocks : {}
       ipv4_config      = v.ipv4_config != null ? v.ipv4_config : []
@@ -77,11 +89,18 @@ locals {
       target      = v.target != null ? v.target : "vsphere.example.com"
       virtual_infrastructure = [
         for key, value in v.virtual_infrastructure : {
-          cluster       = value.cluster != null ? value.cluster : "default"
-          datastore     = value.datastore != null ? value.datastore : "datastore1"
-          portgroup     = value.portgroup != null ? value.portgroup : ["VM Network"]
-          resource_pool = value.resource_pool != null ? value.resource_pool : ""
-          type          = value.type != null ? value.type : "vmware"
+          cluster         = value.cluster != null ? value.cluster : "default"
+          datastore       = value.datastore != null ? value.datastore : "datastore1"
+          disk_mode       = value.disk_mode != null ? value.disk_mode : "Block"
+          interfaces      = value.interfaces != null ? value.interfaces : ["VM Network"]
+          ip_pool         = value.ip_pool != null ? value.ip_pool : ""
+          ip_pool_created = value.ip_pool_created != null ? value.ip_pool_created : true
+          mtu             = value.mtu != null ? value.mtu : 0
+          name            = value.name != null ? value.name : ""
+          provider_name   = value.provider_name != null ? value.provider_name : ""
+          resource_pool   = value.resource_pool != null ? value.resource_pool : ""
+          type            = value.type != null ? value.type : "vmware"
+          vrf             = value.vrf != null ? value.vrf : ""
         }
       ]
     }
