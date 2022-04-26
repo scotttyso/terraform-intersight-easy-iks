@@ -1,5 +1,5 @@
 # Intersight Organization
-organization = "Wakanda"
+organization = "Asgard"
 
 # Global Tag Values - Consumed by Policies if no specific Tags are defined.
 tags = [
@@ -20,13 +20,13 @@ ip_pools = {
     description      = ""
     ipv4_blocks = {
       "0" = {
-        from = "10.96.112.1"
-        size = 128
-        to   = "10.96.112.128"
+        from = "10.88.105.64"
+        size = 64
+        # to   = "10.88.105.128"
       }
     }
     ipv4_config = [{
-      gateway       = "10.96.112.254"
+      gateway       = "10.88.105.1"
       netmask       = "255.255.255.0"
       primary_dns   = "10.101.128.15"
       secondary_dns = "10.101.128.16"
@@ -45,14 +45,20 @@ ip_pools = {
 # Addons
 addons_policies = {
   "ccp-monitor" = {
-    install_strategy  = "Always"
-    release_namespace = "ccp-monitor"
-    upgrade_strategy  = "ReinstallOnFailure"
+    install_strategy = "Always"
+    upgrade_strategy = "ReinstallOnFailure"
   }
   "kubernetes-dashboard" = {
-    install_strategy  = "Always"
-    release_namespace = "kubernetes-dashboard"
-    upgrade_strategy  = "ReinstallOnFailure"
+    install_strategy = "Always"
+    upgrade_strategy = "ReinstallOnFailure"
+  }
+  "smm1_8" = {
+    chart_name       = "smm"
+    chart_version    = "1.8.2-cisco2-helm3"
+    install_strategy = "Always"
+    overrides        = "demoApplication,enabled,true"
+    release_name     = "smm1.8"
+    upgrade_strategy = "ReinstallOnFailure"
   }
 }
 
@@ -61,9 +67,6 @@ container_runtime_policies = {}
 
 # Kubernetes Version
 kubernetes_version_policies = {
-  "v1.20.14" = {
-    version = "v1.20.14"
-  }
   "v1.21.10" = {
     version = "v1.21.10"
   }
@@ -71,16 +74,16 @@ kubernetes_version_policies = {
 
 # Network CIDR Policies
 network_cidr_policies = {
-  "Wakanda_CIDR" = {
+  "Asgrad_CIDR" = {
     cni_type         = "Calico"
-    pod_network_cidr = "100.71.0.0/16"
-    service_cidr     = "100.72.0.0/16"
+    pod_network_cidr = "100.88.0.0/16"
+    service_cidr     = "100.89.0.0/16"
   }
 }
 
 # NodeOS Configuration
 nodeos_configuration_policies = {
-  "Wakanda" = {
+  "Asgard" = {
     dns_servers = ["10.101.128.15", "10.101.128.16"]
     dns_suffix  = "rich.ciscolabs.com"
     ntp_servers = ["10.101.128.15", "10.101.128.16"]
@@ -93,14 +96,14 @@ trusted_certificate_authorities = {}
 
 # VM Infra Config
 virtual_machine_infra_config = {
-  "Panther" = {
+  "Thor" = {
     description = ""
     tags        = []
-    target      = "wakanda-vcenter.rich.ciscolabs.com"
+    target      = "asgard-vcenter.rich.ciscolabs.com"
     virtual_infrastructure = [{
-      cluster       = "Panther"
-      datastore     = "NVMe_DS1"
-      portgroup     = ["prod|nets|Wakanda_IKS"]
+      cluster       = "Thor"
+      datastore     = "Mjolnir"
+      interfaces    = ["prod|Apps|Web1"]
       resource_pool = ""
       type          = "vmware"
     }]
