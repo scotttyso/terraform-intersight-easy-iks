@@ -6,7 +6,7 @@ tfc_workspaces = [{
 
 kubernetes_cluster_profiles = {
   "thor-cl1" = {
-    action                    = "No-op" # Options are {Delete|Deploy|Ready|No-op|Unassign}.
+    action                    = "Deploy" # Options are {Delete|Deploy|Ready|No-op|Unassign}.
     action_ignore             = true
     addons_policies           = ["ccp-monitor", "kubernetes-dashboard", "smm1_8"]
     certificate_configuration = false
@@ -52,8 +52,8 @@ kubernetes_cluster_profiles = {
     wait_for_completion           = false
   }
   "thor-cl2" = {
-    action                    = "No-op" # Options are {Delete|Deploy|Ready|No-op|Unassign}.
-    action_ignore             = false
+    action                    = "Deploy" # Options are {Delete|Deploy|Ready|No-op|Unassign}.
+    action_ignore             = true
     addons_policies           = ["ccp-monitor", "kubernetes-dashboard", "smm1_8"]
     certificate_configuration = false
     cluster_configuration = [{

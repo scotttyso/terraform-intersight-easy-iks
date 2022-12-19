@@ -44,7 +44,7 @@ variable "kubernetes_cluster_profiles" {
   description = <<-EOT
   Intersight Kubernetes Service Cluster Profile Variable Map.
   * action - Action to perform on the Kubernetes Cluster.  Options are {Delete|Deploy|Ready|No-op|Unassign}.
-  * action_ignore - add the action to the ignore lifecycle.
+  * action_ignore - Ignore the Action attribute if this is set to true.
   * addons_policies - Names of the Kubernetes Add-ons to add to the cluster.  Options are {ccp-monitor|kubernetes-dashboard} or [].
   * cluster_configuration - IKS Cluster Settings:
     - kubernetes_api_vip - VIP for the cluster Kubernetes API server. If this is empty and a cluster IP pool is specified, it will be allocated from the IP pool.
